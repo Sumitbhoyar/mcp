@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "playwright-browser": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/src/server.js"
+      ],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}
