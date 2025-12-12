@@ -4,7 +4,7 @@
 
 The MCP server has been configured for Cursor. The configuration file is located at:
 
-**Windows:** `C:\Users\sumit\.cursor\mcp.json`
+**Windows:** `C:\Users\YourName\.cursor\mcp.json` (replace `YourName` with your username)
 
 ## 📋 What Was Configured
 
@@ -15,13 +15,15 @@ The configuration file contains:
     "playwright-browser": {
       "command": "node",
       "args": [
-        "D:\\Sumit\\Code\\vibe\\mcp-practice\\src\\server.js"
+        "C:\\path\\to\\mcp-practice\\src\\server.js"
       ],
-      "cwd": "D:\\Sumit\\Code\\vibe\\mcp-practice"
+      "cwd": "C:\\path\\to\\mcp-practice"
     }
   }
 }
 ```
+
+**Note:** The paths will be automatically resolved when you run `setup-cursor-config.ps1` from the project directory.
 
 ## 🚀 Next Steps
 
@@ -43,14 +45,15 @@ If the MCP server doesn't work after restarting:
 
 2. **Verify the server file exists:**
    ```powershell
-   Test-Path "D:\Sumit\Code\vibe\mcp-practice\src\server.js"
+   Test-Path "src\server.js"
    ```
+   (Run this from the project directory)
 
 3. **Test the server manually:**
    ```powershell
-   cd D:\Sumit\Code\vibe\mcp-practice
    node src/server.js
    ```
+   (Run this from the project directory - Press Ctrl+C to exit)
    (Press Ctrl+C to exit - this tests if the server starts without errors)
 
 4. **Check Cursor's logs** - Look for MCP-related errors in Cursor's developer console (Help > Toggle Developer Tools)
@@ -58,7 +61,7 @@ If the MCP server doesn't work after restarting:
 ## 📝 Editing the Configuration
 
 To modify the configuration later, edit:
-- **Windows:** `C:\Users\sumit\.cursor\mcp.json`
+- **Windows:** `C:\Users\YourName\.cursor\mcp.json` (replace `YourName` with your username)
 
 Or run the setup script again:
 ```powershell

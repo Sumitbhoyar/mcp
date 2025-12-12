@@ -45,15 +45,15 @@ Cursor uses an MCP configuration file located at:
        "playwright-browser": {
          "command": "node",
          "args": [
-           "D:\\Sumit\\Code\\vibe\\mcp-practice\\src\\server.js"
+           "C:\\path\\to\\mcp-practice\\src\\server.js"
          ],
-         "cwd": "D:\\Sumit\\Code\\vibe\\mcp-practice"
+         "cwd": "C:\\path\\to\\mcp-practice"
        }
      }
    }
    ```
 
-   **Important:** Update the paths to match your actual project location.
+   **Important:** Replace `C:\\path\\to\\mcp-practice` with the actual path to your project directory.
 
 #### Quick Setup (macOS/Linux)
 
@@ -162,4 +162,3 @@ The server communicates via stdio, so it's designed to be used by MCP clients ra
 ## License
 
 MIT
-# mcp
