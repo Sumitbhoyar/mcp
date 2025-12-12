@@ -15,9 +15,9 @@ The configuration file contains:
     "playwright-browser": {
       "command": "node",
       "args": [
-        "C:\\path\\to\\mcp-practice\\src\\server.js"
+        "C:\\path\\to\\mcp-practice\\servers\\playwright-browser\\src\\server.js"
       ],
-      "cwd": "C:\\path\\to\\mcp-practice"
+      "cwd": "C:\\path\\to\\mcp-practice\\servers\\playwright-browser"
     }
   }
 }
@@ -45,15 +45,16 @@ If the MCP server doesn't work after restarting:
 
 2. **Verify the server file exists:**
    ```powershell
-   Test-Path "src\server.js"
+   Test-Path "servers\playwright-browser\src\server.js"
    ```
-   (Run this from the project directory)
+   (Run this from the project root directory)
 
 3. **Test the server manually:**
    ```powershell
+   cd servers\playwright-browser
    node src/server.js
    ```
-   (Run this from the project directory - Press Ctrl+C to exit)
+   (Press Ctrl+C to exit - this tests if the server starts without errors)
    (Press Ctrl+C to exit - this tests if the server starts without errors)
 
 4. **Check Cursor's logs** - Look for MCP-related errors in Cursor's developer console (Help > Toggle Developer Tools)

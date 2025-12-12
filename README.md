@@ -1,28 +1,43 @@
-# Playwright MCP Server
+# MCP Practice - Collection of MCP Servers
 
-An MCP (Model Context Protocol) server that provides browser automation capabilities using Playwright. This allows you to navigate websites, extract content, and perform web tasks through simple prompts.
+This repository contains a collection of MCP (Model Context Protocol) servers, each providing different functionality for AI assistants.
 
-## Features
+## 📦 Available Servers
 
-- **Navigate to URLs** - Open and load web pages
-- **Extract page content** - Get text or HTML content from pages
-- **Get page titles** - Retrieve page titles
-- **Take screenshots** - Capture page screenshots
-- **Interact with pages** - Click elements, type text, wait for selectors
+### 🎭 Playwright Browser (`servers/playwright-browser`)
+Browser automation server using Playwright. Navigate websites, extract content, take screenshots, and interact with web pages.
 
-## Installation
+**Features:**
+- Navigate to URLs
+- Extract page content (text or HTML)
+- Get page titles
+- Take screenshots
+- Click elements, type text, wait for selectors
 
-1. Install dependencies:
+See [servers/playwright-browser/README.md](servers/playwright-browser/README.md) for detailed documentation.
+
+## 🚀 Quick Start
+
+### Installation
+
+1. Install all dependencies:
 ```bash
-npm install
+npm run install:all
 ```
 
-2. Install Playwright browsers:
+2. Install Playwright browsers (for playwright-browser server):
 ```bash
+npm run setup:playwright
+```
+
+Or install dependencies for a specific server:
+```bash
+cd servers/playwright-browser
+npm install
 npx playwright install chromium
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 ### For Cursor IDE
 
@@ -45,9 +60,9 @@ Cursor uses an MCP configuration file located at:
        "playwright-browser": {
          "command": "node",
          "args": [
-           "C:\\path\\to\\mcp-practice\\src\\server.js"
+           "C:\\path\\to\\mcp-practice\\servers\\playwright-browser\\src\\server.js"
          ],
-         "cwd": "C:\\path\\to\\mcp-practice"
+         "cwd": "C:\\path\\to\\mcp-practice\\servers\\playwright-browser"
        }
      }
    }
@@ -69,9 +84,9 @@ Cursor uses an MCP configuration file located at:
        "playwright-browser": {
          "command": "node",
          "args": [
-           "/full/path/to/mcp-practice/src/server.js"
+           "/full/path/to/mcp-practice/servers/playwright-browser/src/server.js"
          ],
-         "cwd": "/full/path/to/mcp-practice"
+         "cwd": "/full/path/to/mcp-practice/servers/playwright-browser"
        }
      }
    }
@@ -90,7 +105,47 @@ If you're using Claude Desktop instead:
 - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Linux:** `~/.config/Claude/claude_desktop_config.json`
 
-## Usage
+## 📝 Adding a New MCP Server
+
+To add a new MCP server:
+
+1. Create a new directory under `servers/`:
+   ```bash
+   mkdir servers/your-server-name
+   mkdir servers/your-server-name/src
+   ```
+
+2. Create a `package.json` in the new server directory with:
+   - Server-specific dependencies
+   - A `start` script pointing to your server entry point
+
+3. Create your server implementation in `servers/your-server-name/src/server.js`
+
+4. Update `setup-cursor-config.ps1` to include your new server in the configuration
+
+5. Add documentation in `servers/your-server-name/README.md`
+
+## 🏗️ Project Structure
+
+```
+mcp-practice/
+├── servers/                    # All MCP servers
+│   ├── playwright-browser/    # Playwright browser automation server
+│   │   ├── src/
+│   │   │   └── server.js      # Server implementation
+│   │   ├── package.json       # Server dependencies
+│   │   └── README.md          # Server documentation
+│   └── [future servers...]    # Add more servers here
+├── package.json               # Root workspace configuration
+├── setup-cursor-config.ps1    # Cursor configuration setup script
+├── cursor-mcp-config.json     # Example Cursor config
+├── mcp-config.json            # Example MCP config
+└── README.md                  # This file
+```
+
+## 📚 Usage Examples
+
+### Playwright Browser Server
 
 Once configured, you can use prompts like:
 
@@ -99,66 +154,25 @@ Once configured, you can use prompts like:
 - "Take a screenshot of https://example.com"
 - "Navigate to https://example.com, click the button with selector '#submit', and tell me what happened."
 
-## Available Tools
+## 🔧 Development
 
-### navigate
-Navigate to a URL and wait for the page to load.
+### Running a Server Directly
 
-**Parameters:**
-- `url` (required): The URL to navigate to
-- `waitUntil` (optional): When to consider navigation successful ('load', 'domcontentloaded', 'networkidle')
-
-### get_page_content
-Get the text content of the current page.
-
-**Parameters:**
-- `includeHtml` (optional): Whether to include HTML content (default: false)
-
-### get_page_title
-Get the title of the current page.
-
-### screenshot
-Take a screenshot of the current page.
-
-**Parameters:**
-- `fullPage` (optional): Whether to capture the full page or just the viewport (default: false)
-
-### click
-Click an element on the page.
-
-**Parameters:**
-- `selector` (required): CSS selector for the element to click
-
-### type
-Type text into an input field.
-
-**Parameters:**
-- `selector` (required): CSS selector for the input field
-- `text` (required): The text to type
-
-### wait_for_selector
-Wait for an element to appear on the page.
-
-**Parameters:**
-- `selector` (required): CSS selector to wait for
-- `timeout` (optional): Timeout in milliseconds (default: 30000)
-
-## Development
-
-To run the server directly (for testing):
+To test a server directly:
 
 ```bash
+cd servers/playwright-browser
 npm start
 ```
 
 Or:
 
 ```bash
-node src/server.js
+node servers/playwright-browser/src/server.js
 ```
 
-The server communicates via stdio, so it's designed to be used by MCP clients rather than run standalone.
+Note: Servers communicate via stdio, so they're designed to be used by MCP clients rather than run standalone.
 
-## License
+## 📄 License
 
 MIT

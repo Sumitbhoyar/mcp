@@ -3,9 +3,9 @@
     "playwright-browser": {
       "command": "node",
       "args": [
-        "src/server.js"
+        "servers/playwright-browser/src/server.js"
       ],
-      "cwd": "."
+      "cwd": "servers/playwright-browser"
     }
   }
 }

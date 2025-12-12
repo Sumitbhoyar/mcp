@@ -16,8 +16,8 @@ if (-not (Test-Path $configDir)) {
 }
 
 # Resolve absolute paths relative to script directory
-$serverPath = (Resolve-Path (Join-Path $scriptDir "src\server.js")).Path
-$cwd = (Resolve-Path $scriptDir).Path
+$serverPath = (Resolve-Path (Join-Path $scriptDir "servers\playwright-browser\src\server.js")).Path
+$cwd = (Resolve-Path (Join-Path $scriptDir "servers\playwright-browser")).Path
 
 # Server configuration
 $config = @{
